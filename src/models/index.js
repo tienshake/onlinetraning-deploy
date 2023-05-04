@@ -11,18 +11,13 @@ const db = {};
 let sequelize;
 
 const customizeConfig = {
-  host: "bxxqvff9auldsfddeo0a-mysql.services.clever-cloud.com",
+  host: "34.28.3.45",
   dialect: "mysql",
   logging: false,
   timezone: "+07:00",
 };
 
-sequelize = new Sequelize(
-  "bxxqvff9auldsfddeo0a",
-  "ulinanaouynqevsc",
-  "Oxkz9ABZu3EczfiLmWMf",
-  customizeConfig
-);
+sequelize = new Sequelize("onlineTraining", "root", "48026", customizeConfig);
 
 // if (config.use_env_variable) {
 //   sequelize = new Sequelize(process.env[config.use_env_variable], config);

@@ -1,17 +1,12 @@
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const sequelize = new Sequelize(
-  "bxxqvff9auldsfddeo0a",
-  "ulinanaouynqevsc",
-  null,
-  {
-    host: "bxxqvff9auldsfddeo0a-mysql.services.clever-cloud.com",
-    dialect: "mysql",
-    password: "Oxkz9ABZu3EczfiLmWMf",
-    logging: false,
-  }
-);
+const sequelize = new Sequelize("onlineTraining", "root", null, {
+  host: "34.28.3.45",
+  dialect: "mysql",
+  password: "48026",
+  logging: false,
+});
 
 const connectDB = async () => {
   try {

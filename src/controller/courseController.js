@@ -636,8 +636,8 @@ const getMyCourses = async (req, res) => {
               sequelize.literal(`(
                 SELECT SUM(lectures.totalTime)
                 FROM Course_sections
-                INNER JOIN Lectures AS lectures ON Course_sections.id = lectures.course_section_id
-                WHERE Course_sections.course_id = Course.id
+                INNER JOIN Lectures AS lectures ON course_sections.id = lectures.course_section_id
+                WHERE course_sections.course_id = Course.id
               )`),
               "totalTime",
             ],
@@ -736,6 +736,20 @@ const deleteEnrollment = async (req, res) => {
   }
 };
 
+const getCourseByCategory = async (req, res) => {
+  const categoryIds = req.query.id.split(",").map(Number);
+
+  try {
+    const courses = await db.Course.findAll({
+      where: { category_id: { [Op.or]: categoryIds } },
+    });
+    res.json(courses);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+};
+
 export default {
   createCourse,
   getCourse,
@@ -747,4 +761,5 @@ export default {
   createLectureCourse,
   getVideoByFilename,
   deleteEnrollment,
+  getCourseByCategory,
 };

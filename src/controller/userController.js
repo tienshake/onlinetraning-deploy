@@ -7,7 +7,7 @@ import { sequelize } from "../models";
 const { Op } = require("sequelize");
 
 const createUser = async (req, res) => {
-  const { name, email, password, role_id = 1 } = req.body;
+  const { name, email, password, role_id = 2 } = req.body;
 
   try {
     if (!name || !email || !password || !role_id) {
